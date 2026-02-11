@@ -23,11 +23,11 @@ Use this to verify compliance before each milestone submission.
 Each functionality = a full set of create / read / update / delete operations on a distinct domain object.
 
 | # | Functionality | Endpoints | Status |
-|---|---|---|---|
-| 1 | **Product Management** | `GET/POST/PUT/DELETE /products` | ✅ Built |
-| 2 | **Inventory Tracking** | `GET/POST/PUT /inventory`, `/low-stock`, `/add-stock` | ✅ Built |
-| 3 | **Order Management** | `GET/POST/PUT/DELETE /orders`, status updates, cancellation | ✅ Built |
-| 4 | **Customer Management** | `GET/POST/PUT/DELETE /customers`, size profile updates | ✅ Built |
+|---|---|---|--|
+| 1 | **Product Management** | `GET/POST/PUT/DELETE /products` | ✅ |
+| 2 | **Inventory Tracking** | `GET/POST/PUT /inventory`, `/low-stock`, `/add-stock` | ✅ |
+| 3 | **Order Management** | `GET/POST/PUT/DELETE /orders`, status updates, cancellation | ✅ |
+| 4 | **Customer Management** | `GET/POST/PUT/DELETE /customers`, size profile updates | ✅|
 
 > The three specialized features (Size Profile Matching, Variant Analytics, Bundle Tracking) are **on top of** these four — they add significant value to the grade beyond the minimum.
 
@@ -37,11 +37,11 @@ Each page must change its content based on responses from the server.
 
 | # | Page | Dynamic content from server | Status |
 |---|---|---|---|
-| 1 | **Inventory Dashboard** | Live stock levels, low-stock alerts, reorder flags | 🔲 Frontend to build |
-| 2 | **Order Management** | Order list filtered by status, customer order history | 🔲 Frontend to build |
-| 3 | **Analytics** | Revenue, top products, category breakdown, sales trend charts | 🔲 Frontend to build |
-| 4 | **Product Catalogue** | Products filtered by category and/or customer size profile | 🔲 Frontend to build |
-| 5 | **Customer Profile** | Customer details + matched products based on their size profile | 🔲 Frontend to build |
+| 1 | **Inventory Dashboard** | Live stock levels, low-stock alerts, reorder flags | 🔲 |
+| 2 | **Order Management** | Order list filtered by status, customer order history | 🔲 |
+| 3 | **Analytics** | Revenue, top products, category breakdown, sales trend charts | 🔲 |
+| 4 | **Product Catalogue** | Products filtered by category and/or customer size profile | 🔲 |
+| 5 | **Customer Profile** | Customer details + matched products based on their size profile | 🔲 |
 
 > Pages 4 and 5 are optional extras — we only need 3, but having 5 is better for the grade.
 

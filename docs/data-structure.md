@@ -29,22 +29,22 @@ CUSTOMERS ──< ORDERS
 ### PRODUCTS
 The core catalogue. Every item the company sells is a product.
 
-| Field | Type | Notes |
-|---|---|---|
-| id | Long | Primary key, auto-generated |
-| name | String | e.g. "Classic French Tips" |
-| description | String | Up to 500 characters |
-| category | String | `press-on nails` / `necklaces` / `sunglasses` |
-| price | Decimal | Retail price in CAD |
-| size | String | `Small` / `Medium` / `Large` / `16in` / `18in` / `20in` |
-| color | String | e.g. "Rose Gold", "Black" |
-| variant | String | e.g. "Matte", "Glitter", "Gold Plated" |
-| supplier_id | Long | FK → SUPPLIERS — which supplier provides this product |
-| isBundle | Boolean | `true` = this product is a kit with sub-components |
-| imageUrl | String | Path to product image e.g. `/images/abc123.jpg` |
-| active | Boolean | `false` = soft-deleted, hidden from storefront |
-| createdAt | DateTime | Set automatically on creation |
-| updatedAt | DateTime | Set automatically on every update |
+| Field | Type | Notes                                                                     |
+|---|---|---------------------------------------------------------------------------|
+| id | Long | Primary key, auto-generated                                               |
+| name | String | e.g. "Rose Garden"                                                        |
+| description | String | Up to 500 characters                                                      |
+| category | String | `press-on nails` / `necklaces` / `rings`                                  |
+| price | Decimal | Retail price in CAD                                                       |
+| size | String | `Small` / `Medium` / `Large` / `16in` / `18in` / `20in`  more to be added |
+| color | String | e.g. "Rose Gold", "Black"                                                 |
+| variant | String | e.g. "Matte", "Glitter", "Gold Plated"                                    |
+| supplier_id | Long | FK → SUPPLIERS — which supplier provides this product                     |
+| isBundle | Boolean | `true` = this product is a kit with sub-components                        |
+| imageUrl | String | Path to product image e.g. `/images/abc123.jpg`                           |
+| active | Boolean | `false` = soft-deleted, hidden from storefront                            |
+| createdAt | DateTime | Set automatically on creation                                             |
+| updatedAt | DateTime | Set automatically on every update                                         |
 
 ---
 
@@ -70,23 +70,23 @@ Tracks stock levels. There is exactly **one inventory record per product**.
 ### CUSTOMERS
 Stores both contact info and **size profile** data which powers the size matching feature.
 
-| Field | Type | Notes |
-|---|---|---|
-| id | Long | Primary key |
-| firstName | String | |
-| lastName | String | |
-| email | String | Unique — used to identify customers |
-| phone | String | |
-| address | String | Street address |
-| city | String | e.g. "Toronto" |
-| province | String | e.g. "ON" |
-| postalCode | String | e.g. "M5V 3A8" |
-| preferredNailSize | String | `Small` / `Medium` / `Large` |
-| preferredNecklaceLength | String | `14in` / `16in` / `18in` / `20in` |
-| preferredSunglassesSize | String | `Small` / `Medium` / `Large` |
-| preferredStyle | String | `Modern` / `Classic` / `Bohemian` / `Vintage` |
-| active | Boolean | `false` = soft-deleted |
-| createdAt | DateTime | Auto |
+| Field                   | Type | Notes                                         |
+|-------------------------|---|-----------------------------------------------|
+| id                      | Long | Primary key                                   |
+| firstName               | String |                                               |
+| lastName                | String |                                               |
+| email                   | String | Unique — used to identify customers           |
+| phone                   | String |                                               |
+| address                 | String | Street address                                |
+| city                    | String | e.g. "Toronto"                                |
+| province                | String | e.g. "ON"                                     |
+| postalCode              | String | e.g. "M5V 3A8"                                |
+| preferredNailSize       | String | `Small` / `Medium` / `Large`                  |
+| preferredNecklaceLength | String | `14in` / `16in` / `18in` / `20in`             |
+| preferredRingSize       | String | TBD                                           |
+| preferredStyle          | String | `Modern` / `Classic` / `Bohemian` / `Vintage` |
+| active                  | Boolean | `false` = soft-deleted                        |
+| createdAt               | DateTime | Auto                                          |
 
 > The four `preferred*` fields are what the **Size Profile Matching** feature reads to filter products.
 
@@ -147,10 +147,10 @@ Contact information for the companies that supply the products. Currently standa
 
 ## Allowed Values (Enums & Fixed Strings)
 
-| Field | Options |
-|---|---|
-| Order `status` | `PENDING` / `CONFIRMED` / `PROCESSING` / `SHIPPED` / `DELIVERED` / `CANCELLED` |
-| `category` | `press-on nails` / `necklaces` / `sunglasses` |
-| `size` (nails & sunglasses) | `Small` / `Medium` / `Large` |
-| `size` (necklaces) | `14in` / `16in` / `18in` / `20in` |
-| `preferredStyle` | `Modern` / `Classic` / `Bohemian` / `Vintage` |
+| Field              | Options                                                                        |
+|--------------------|--------------------------------------------------------------------------------|
+| Order `status`     | `PENDING` / `CONFIRMED` / `PROCESSING` / `SHIPPED` / `DELIVERED` / `CANCELLED` |
+| `category`         | `press-on nails` / `necklaces` / `sunglasses`                                  |
+| `size` (rings)     | TBD                                                                            |
+| `size` (necklaces) | `14in` / `16in` / `18in` / `20in`                                              |
+| `preferredStyle`   | TBD                                                                            |

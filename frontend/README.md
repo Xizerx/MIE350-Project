@@ -24,11 +24,10 @@ Prepend the base URL to use it.
 
 ## Pages to build
 
-| Page | Endpoints to call |
-|---|---|
-| Product catalogue / storefront | `GET /products/active` or `GET /products/customer/{id}/matched` |
-| Product detail | `GET /products/{id}`, `GET /inventory/product/{id}` |
-| Inventory dashboard | `GET /inventory`, `GET /inventory/low-stock` |
-| Order management | `GET /orders`, `PUT /orders/{id}/status` |
-| Analytics | `GET /analytics/last-30-days` |
-| Customer profile | `GET /customers/{id}`, `PUT /customers/{id}/size-profile` |
+| Page                           | Endpoints to call                                                                                                   |
+|--------------------------------|---------------------------------------------------------------------------------------------------------------------|
+| Product catalogue / storefront | `GET /products/active` or `GET /products/customer/{id}/matched`                                                     |
+| Product detail                 | `GET /products/{id}`, `GET /inventory/product/{id}`                                                                 |
+| Dashboard                      | `GET /inventory`, `GET /inventory/low-stock`,`GET /orders`, `PUT /orders/{id}/status`,`GET /analytics/last-30-days` |
+                                                      |
+

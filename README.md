@@ -23,7 +23,7 @@ Angelveil is an internal tool for managing the business. It lets staff:
 | Layer | Technology |
 |---|---|
 | Backend | Java 21 + Spring Boot |
-| Database | H2 (in-memory, dev) → to be migrated to cloud DB |
+| Database | H2 (in-memory, dev) |
 | Frontend | TBD |
 | Deployment | TBD (Railway / Render) |
 
@@ -61,14 +61,14 @@ Some products are sold as kits (e.g. press-on nails + application kit). When a b
 
 ## Team
 
-| Name | Role |
-|---|---|
+| Name | Role                 |
+|---|----------------------|
 | Yushu | Backend architecture |
-| Martha | Database design |
-| Giovanna | Database & analytics |
-| Harbin | Order processing |
-| Junyang | Inventory service |
-| Ayesha | Sample data & testing |
+| Martha | TBD                  |
+| Giovanna | TBD                  |
+| Harbin | TBD                  |
+| Junyang | TBD                  |
+| Ayesha | TBD                  |
 
 ---
 
@@ -76,13 +76,13 @@ Some products are sold as kits (e.g. press-on nails + application kit). When a b
 
 - [x] Data structure finalized
 - [x] API contract defined
-- [x] Backend — Product Management (Functionality 1)
-- [x] Backend — Inventory Tracking (Functionality 2)
-- [x] Backend — Order Management (Functionality 3)
-- [x] Backend — Customer Management (Functionality 4)
-- [x] Backend — Size Profile Matching (Specialized Feature 1)
-- [x] Backend — Variant Analytics (Specialized Feature 2)
-- [x] Backend — Bundle Tracking (Specialized Feature 3)
+- [x] Backend — Product Management 
+- [x] Backend — Inventory Tracking 
+- [x] Backend — Order Management 
+- [x] Backend — Customer Management 
+- [x] Backend — Size Profile Matching 
+- [x] Backend — Variant Analytics 
+- [x] Backend — Bundle Tracking 
 - [ ] Frontend implementation (3+ dynamic pages required)
 - [ ] About / disclaimer / links pages
 - [ ] Cloud deployment

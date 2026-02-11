@@ -24,7 +24,7 @@ backend/
 └── pom.xml
 ```
 
-## Running locally
+## Running locally (In Development)
 
 > Prerequisites: Java 21, Maven
 

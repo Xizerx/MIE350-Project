@@ -1,0 +1,23 @@
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+
+# IntelliJ
+.idea/
+*.iml
+*.iws
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Uploads (images stored locally)
+backend/uploads/
+
+# Environment files
+.env
+*.env.local

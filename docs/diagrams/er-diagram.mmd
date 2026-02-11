@@ -1,0 +1,84 @@
+erDiagram
+    PRODUCTS {
+        Long id PK
+        String name
+        String description
+        String category
+        BigDecimal price
+        String size
+        String color
+        String variant
+        Boolean isBundle
+        String imageUrl
+        Boolean active
+        DateTime createdAt
+        DateTime updatedAt
+    }
+
+    INVENTORY {
+        Long id PK
+        Long product_id FK
+        Integer quantityInStock
+        Integer reorderLevel
+        Integer reorderQuantity
+        String warehouseLocation
+        DateTime lastRestocked
+    }
+
+    CUSTOMERS {
+        Long id PK
+        String firstName
+        String lastName
+        String email
+        String phone
+        String city
+        String province
+        String preferredNailSize
+        String preferredNecklaceLength
+        String preferredSunglassesSize
+        String preferredStyle
+        Boolean active
+        DateTime createdAt
+    }
+
+    ORDERS {
+        Long id PK
+        Long customer_id FK
+        String orderNumber
+        String status
+        BigDecimal subtotal
+        BigDecimal tax
+        BigDecimal shippingCost
+        BigDecimal totalAmount
+        String shippingAddress
+        DateTime createdAt
+        DateTime shippedAt
+        DateTime deliveredAt
+    }
+
+    ORDER_ITEMS {
+        Long id PK
+        Long order_id FK
+        Long product_id FK
+        Integer quantity
+        BigDecimal unitPrice
+        BigDecimal discount
+        Boolean includesApplicationKit
+    }
+
+    SUPPLIERS {
+        Long id PK
+        String name
+        String contactPerson
+        String email
+        String category
+        String country
+        Integer leadTimeDays
+        Integer minimumOrderQuantity
+        Boolean active
+    }
+
+    PRODUCTS ||--|| INVENTORY : "has stock"
+    CUSTOMERS ||--o{ ORDERS : "places"
+    ORDERS ||--|{ ORDER_ITEMS : "contains"
+    PRODUCTS ||--o{ ORDER_ITEMS : "appears in"

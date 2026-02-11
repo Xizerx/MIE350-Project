@@ -21,3 +21,5 @@ backend/uploads/
 # Environment files
 .env
 *.env.local
+
+.claude

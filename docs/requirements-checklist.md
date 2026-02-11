@@ -58,13 +58,7 @@ These must all be present somewhere in the frontend. Assign a page/section to ea
 | Topic overview with proper citations | About / Info page — cite sources about inventory management, accessories industry | TBD | 🔲 |
 | Links page (organized, relevant external sites) | Dedicated links page or sidebar | TBD | 🔲 |
 
-### Suggested links to include
-**Industry & Inspiration**
-- [OPI](https://www.opi.com) — major nail brand
-- [Static Nails](https://www.staticnails.com) — press-on nail brand (direct competitor reference)
-- [Etsy — Press-on Nails](https://www.etsy.com/search?q=press+on+nails) — marketplace context
-- [Mejuri](https://mejuri.com) — jewelry brand
-- [Quay Australia](https://www.quayaustralia.com) — sunglasses brand
+
 
 **Inventory Management Context**
 - [Shopify Inventory Management Guide](https://www.shopify.com/blog/inventory-management)
@@ -102,7 +96,7 @@ These must all be present somewhere in the frontend. Assign a page/section to ea
 | Jan 20 | Topic selected, roles assigned | ✅ |
 | Jan 27 | Project plan with task breakdown | ✅ (Section A & B in Project Log) |
 | Late Feb | Written progress report | 🔲 |
-| Late Feb | Web application prototype | 🔲 Backend running. Frontend needed. |
+| Late Feb | Web application prototype | 🔲  |
 | Late Mar | Project presentation | 🔲 |
 | Apr 7 | Final report + web application | 🔲 |
 | Apr 7 | 360° review | 🔲 |

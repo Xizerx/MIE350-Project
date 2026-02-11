@@ -31,7 +31,7 @@
 | `GET` | `/products/category/{category}` | Filter by category |
 | `GET` | `/products/categories` | List of all category strings |
 | `GET` | `/products/bundles` | Bundle/kit products only |
-| `GET` | `/products/customer/{customerId}/matched` | ⭐ Products filtered by this customer's size profile |
+| `GET` | `/products/customer/{customerId}/matched` |  Products filtered by this customer's size profile |
 | `POST` | `/products` | Create a product |
 | `PUT` | `/products/{id}` | Update a product |
 | `DELETE` | `/products/{id}` | Soft-delete (sets `active = false`) |
@@ -52,7 +52,7 @@
 | `GET` | `/inventory` | All inventory records |
 | `GET` | `/inventory/{id}` | Single record |
 | `GET` | `/inventory/product/{productId}` | Inventory for a specific product |
-| `GET` | `/inventory/low-stock` | ⭐ Items at or below reorder threshold — use for alerts |
+| `GET` | `/inventory/low-stock` |  Items at or below reorder threshold — use for alerts |
 | `GET` | `/inventory/out-of-stock` | Items with 0 stock |
 | `GET` | `/inventory/category/{category}` | Inventory by product category |
 | `GET` | `/inventory/product/{productId}/check-stock?quantity=N` | Returns `{ "inStock": true/false }` |
@@ -73,7 +73,7 @@
 | `GET` | `/orders/customer/{customerId}/history` | Customer orders, newest first |
 | `GET` | `/orders/status/{status}` | Filter by status |
 | `GET` | `/orders/date-range?startDate=...&endDate=...` | Date range filter (ISO 8601) |
-| `POST` | `/orders` | ⭐ Create order — auto-decrements inventory, calculates totals |
+| `POST` | `/orders` |  Create order — auto-decrements inventory, calculates totals |
 | `PUT` | `/orders/{id}/status` | Update status — body: `{ "status": "SHIPPED" }` |
 | `DELETE` | `/orders/{id}` | Cancel order — restores inventory |
 
@@ -105,7 +105,7 @@
 
 | Method | Endpoint | What it does |
 |---|---|---|
-| `GET` | `/analytics/last-30-days` | ⭐ Key metrics for past 30 days |
+| `GET` | `/analytics/last-30-days` |  Key metrics for past 30 days |
 | `GET` | `/analytics/current-month` | Metrics for this calendar month |
 | `GET` | `/analytics?startDate=...&endDate=...` | Custom date range |
 
@@ -161,7 +161,7 @@
 | `GET` | `/customers/city/{city}` | Customers by city |
 | `POST` | `/customers` | Create customer |
 | `PUT` | `/customers/{id}` | Update customer |
-| `PUT` | `/customers/{id}/size-profile` | ⭐ Update size profile only |
+| `PUT` | `/customers/{id}/size-profile` |  Update size profile only |
 | `DELETE` | `/customers/{id}` | Soft-delete |
 
 ### Updating a size profile — request body
@@ -178,21 +178,21 @@
 
 ## The Three Special Features — How They Work
 
-### ⭐ Size Profile Matching
+###  Size Profile Matching
 1. Customer logs in → frontend fetches `GET /customers/{id}`
 2. Customer's preferred sizes are stored in their profile
 3. Frontend calls `GET /products/customer/{id}/matched`
 4. Server filters products by the customer's sizes and returns only matching ones
 5. Customer can update their preferences via `PUT /customers/{id}/size-profile` at any time
 
-### ⭐ Variant Analytics
+###  Variant Analytics
 1. Frontend calls `GET /analytics/last-30-days` on page load
 2. Use `salesTrend[]` → line chart (period on x-axis, revenue on y-axis)
 3. Use `categoryBreakdown[]` → pie or bar chart
 4. Use `topSellingProducts[]` and `lowPerformingProducts[]` → ranked table
 5. `conversionRate` = % of orders that reached `DELIVERED` status
 
-### ⭐ Component Bundle Tracking
+###  Component Bundle Tracking
 1. Bundle products have `isBundle = true`
 2. When creating an order, set `includesApplicationKit: true` on the order item
 3. The server automatically decrements both the bundle stock AND the kit sub-inventory

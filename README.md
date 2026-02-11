@@ -1,4 +1,4 @@
-# Angelveil 💜
+# Angelveil 
 
 Inventory management web application for an accessories company selling press-on nails, chain necklaces, sunglasses, and more.
 

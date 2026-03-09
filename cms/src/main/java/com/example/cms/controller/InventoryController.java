@@ -1,3 +1,5 @@
+
+
 package com.example.cms.controller;
 
 import com.example.cms.model.entity.Inventory;
@@ -30,6 +32,9 @@ public class InventoryController {
     Inventory retrieveInventory(@PathVariable("id") Integer inventoryId) {
         return repository.findById(inventoryId).orElse(null);
     }
+}
+
+/*
 
     @PutMapping("/inventory/{id}")
     Inventory updateInventory(@RequestBody Inventory inventory, @PathVariable("id") Integer inventoryId) {
@@ -55,3 +60,4 @@ public class InventoryController {
         repository.deleteById(inventoryId);
     }
 }
+*/

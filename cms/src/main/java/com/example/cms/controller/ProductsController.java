@@ -1,12 +1,12 @@
 package com.example.cms.controller;
 
 import com.example.cms.model.entity.Products;
-import com.example.cms.service.ProductsService;
-import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+/*
 
 @RestController
 @RequestMapping("/products")
@@ -53,3 +53,4 @@ public class ProductsController {
         return ResponseEntity.noContent().build();
     }
 }
+*/

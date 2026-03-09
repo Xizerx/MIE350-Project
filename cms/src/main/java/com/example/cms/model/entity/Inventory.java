@@ -1,10 +1,12 @@
 package com.example.cms.model.entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.math.BigDecimal;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @NoArgsConstructor
@@ -19,7 +21,7 @@ public class Inventory {
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product product;
+    private Products product;
 
     @NotEmpty
     private String shape;

@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.lang.Nullable;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -37,17 +38,17 @@ public class OrderItem {
 
     @ManyToOne
     @JoinColumn(name="product_id")
-    private Product product;
+    private Products product;
 
 
-    public OrderItem(Integer orderItemId, String shape, String size, Integer quantity, Double unitPrice, Order order, Product product){
+    public OrderItem(Integer orderItemId, String shape, String size, Integer quantity, Double unitPrice, Order order, Products product){
         this.orderItemId = orderItemId;
         this.shape = shape;
         this.size = size;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
-        this.orderId = order;
-        this.productId = product;
+        this.order = order;
+        this.product = product;
     }
 
 }

@@ -16,7 +16,6 @@ import javax.validation.constraints.NotNull;
 public class Inventory {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer inventory_id;
 
     @ManyToOne

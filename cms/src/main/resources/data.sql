@@ -1,31 +1,19 @@
 
+INSERT INTO suppliers (supplier_id, name, email, phone) VALUES(1, 'A', 'Person1@email', '1234');
+INSERT INTO suppliers (supplier_id, name, email, phone) VALUES(2, 'B', 'Person2@email', '12345');
 
-INSERT INTO departments (code, name, contactEmail) VALUES ('MIE', 'Mechanical and Industrial Engineering', 'reception@mie.utoronto.ca');
-INSERT INTO departments (code, name, contactEmail) VALUES ('ECE', 'Electrical and Computer Engineering', 'eceinquiry@utoronto.ca');
-INSERT INTO departments (code, name, contactEmail) VALUES ('MSE', 'Materials Science and Engineering', 'materials.engineering@utoronto.ca');
 
-INSERT INTO students (id, firstName, lastName, email, initials) VALUES (1111, 'Tyrion', 'Lannister', 'tyrion.lannister@mail.univ.ca', 'TL');
-INSERT INTO students (id, firstName, lastName, email, initials) VALUES (2222, 'Cersei', 'Lannister', 'cersei.lannister@mail.univ.ca', 'CL');
-INSERT INTO students (id, firstName, lastName, email, initials) VALUES (3333, 'Jaime', 'Lannister', 'jaime.lannister@mail.univ.ca', 'JL');
-INSERT INTO students (id, firstName, lastName, email, initials) VALUES (4444, 'Daenerys', 'Targaryen', 'jaime.targaryen@mail.univ.ca', 'DT');
-INSERT INTO students (id, firstName, lastName, email, initials) VALUES (5555, 'Jon', 'Snow', 'jon.snow@mail.univ.ca', 'JS');
+INSERT INTO products (product_id, supplier_id, name, category, price, is_bundle) VALUES (1, 1, 'A', 'a', 1.2, TRUE);
+INSERT INTO products (product_id, supplier_id, name, category, price, is_bundle) VALUES(2, 2, 'B', 'b', 1.3, FALSE);
 
-INSERT INTO professors (id, firstName, lastName, email, office, salary) VALUES (1122, 'Sansa', 'Stark', 'sansa.stark@univ.ca', 'BA1234', 50000);
-INSERT INTO professors (id, firstName, lastName, email, office, salary) VALUES (3344, 'Arya', 'Stark', 'arya.stark@univ.ca', 'MC1234', 70000);
-INSERT INTO professors (id, firstName, lastName, email, office, salary) VALUES (5566, 'Jorah', 'Mormont', 'jorah.mormont@univ.ca', 'MY1234', 60000);
 
-INSERT INTO classrooms (code, capacity) VALUES ('MB123', 100);
-INSERT INTO classrooms (code, capacity) VALUES ('BA1130', 300);
+INSERT INTO inventory (inventory_id, product_id, shape, size, style, color, stock_quantity, reorder_level) VALUES(2, 2, 'A', 'a', 'contemporary', 'purple', 20, 10);
+INSERT INTO inventory (inventory_id, product_id, shape, size, style, color, stock_quantity, reorder_level) VALUES(1, 1, 'B', 'b', 'modern', 'red', 25, 10);
 
-INSERT INTO courses (code, name, professorId, location) VALUES ('GOT123', 'A Game of Thrones', 1122, 'MB123');
-INSERT INTO courses (code, name, professorId, location) VALUES ('GOT456', 'A Clash of Kings', 3344, 'MB123');
-INSERT INTO courses (code, name, professorId, location) VALUES ('GOT789', 'A Storm of Swords', 5566, 'BA1130');
 
-INSERT INTO marks(studentId, courseCode, mark) VALUES(1111, 'GOT123', 80);
-INSERT INTO marks(studentId, courseCode, mark) VALUES(2222, 'GOT123', 85);
-INSERT INTO marks(studentId, courseCode, mark) VALUES(3333, 'GOT456', 90);
-INSERT INTO marks(studentId, courseCode, mark) VALUES(4444, 'GOT456', 95);
-INSERT INTO marks(studentId, courseCode, mark) VALUES(5555, 'GOT789', 100);
-INSERT INTO marks(studentId, courseCode, mark) VALUES(5555, 'GOT123', 80);
-INSERT INTO marks(studentId, courseCode, mark) VALUES(5555, 'GOT456', 90);
+INSERT INTO orders (order_id, customer_name, customer_email, status, created_at) VALUES(1, 'Trinity', 'Trinity@email', 'PLACED', '2021-10-19 18:11:24');
+INSERT INTO orders (order_id, customer_name, customer_email, status, created_at) VALUES(2, 'Giovanna', 'Giovanna@email', 'PLACED', '2021-10-19 18:11:24');
 
+
+INSERT INTO order_items (order_item_id, order_id, product_id, shape, size, quantity, unit_price) VALUES(1, 1, 1, 'A', 'a', 20, 1.3);
+INSERT INTO order_items (order_item_id, order_id, product_id, shape, size, quantity, unit_price) VALUES(2, 2, 2, 'B', 'b', 25, 1.4);

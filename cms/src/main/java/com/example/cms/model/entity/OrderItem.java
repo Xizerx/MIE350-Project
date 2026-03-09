@@ -18,7 +18,7 @@ public class OrderItem {
 
     @Id
     @NotNull
-    private Integer orderItemId;
+    private Integer order_item_id;
 
     @NotEmpty
     private String shape;
@@ -30,7 +30,7 @@ public class OrderItem {
     private Integer quantity;
 
     @NotNull
-    private Double unitPrice;
+    private Double unit_price;
 
     @ManyToOne
     @JoinColumn(name="order_id")
@@ -41,12 +41,12 @@ public class OrderItem {
     private Products product;
 
 
-    public OrderItem(Integer orderItemId, String shape, String size, Integer quantity, Double unitPrice, Order order, Products product){
-        this.orderItemId = orderItemId;
+    public OrderItem(Integer order_item_id, String shape, String size, Integer quantity, Double unit_price, Order order, Products product){
+        this.order_item_id = order_item_id;
         this.shape = shape;
         this.size = size;
         this.quantity = quantity;
-        this.unitPrice = unitPrice;
+        this.unit_price = unit_price;
         this.order = order;
         this.product = product;
     }

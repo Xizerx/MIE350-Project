@@ -15,7 +15,6 @@ import java.sql.Timestamp;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer order_id;
 
     private String customer_name;

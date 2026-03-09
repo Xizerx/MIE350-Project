@@ -18,7 +18,7 @@ public class Supplier {
 
     @Id
     @NotNull
-    private Integer supplierId;
+    private Integer supplier_id;
 
     @NotEmpty
     private String name;
@@ -28,8 +28,8 @@ public class Supplier {
     private String phone;
 
 
-    public Supplier(Integer supplierId, String name, String email, String phone){
-        this.supplierId = supplierId;
+    public Supplier(Integer supplier_id, String name, String email, String phone){
+        this.supplier_id = supplier_id;
         this.name = name;
         this.email = email;
         this.phone = phone;

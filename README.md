@@ -69,6 +69,7 @@ Some products are sold as kits (e.g. press-on nails + application kit). When a b
 | Harbin | TBD                  |
 | Junyang | TBD                  |
 | Ayesha | TBD                  |
+| Trinity | TBD                  |
 
 ---
 

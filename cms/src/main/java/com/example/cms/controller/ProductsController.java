@@ -1,56 +1,48 @@
 package com.example.cms.controller;
 
 import com.example.cms.model.entity.Products;
-import org.springframework.http.ResponseEntity;
+import com.example.cms.model.repository.ProductsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
-/*
-
+@CrossOrigin
 @RestController
-@RequestMapping("/products")
 public class ProductsController {
+    @Autowired
+    private final ProductsRepository repository;
 
-    private final ProductsService productsService;
-
-    public ProductsController(ProductsService productsService) {
-        this.productsService = productsService;
+    public ProductsController(ProductsRepository repository) {
+        this.repository = repository;
     }
 
-    @GetMapping
-    public List<Products> getAllProducts() {
-        return productsService.getAllProducts();
+    @GetMapping("/products")
+    List<Products> retrieveAllProducts() {
+        return repository.findAll();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Products> getProductById(@PathVariable Integer id) {
-        return productsService.getProductById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    @PostMapping("/products")
+    Products createProduct(@RequestBody Products newProduct) {
+        return repository.save(newProduct);
     }
 
-    @PostMapping
-    public ResponseEntity<Products> createProduct(@Valid @RequestBody Products product) {
-        Products savedProduct = productsService.saveProduct(product);
-        return ResponseEntity.ok(savedProduct);
+    @GetMapping("/products/{id}")
+    Optional<Products> retrieveProduct(@PathVariable("id") Integer product_id) {
+        return repository.findById(product_id);
+                //.orElseThrow(() -> new ProductNotFoundException(product_id));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Products> updateProduct(@PathVariable Integer id,
-                                                  @Valid @RequestBody Products product) {
-        try {
-            Products updatedProduct = productsService.updateProduct(id, product);
-            return ResponseEntity.ok(updatedProduct);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+    // create a put
+
+    @DeleteMapping("/products/{id}")
+    void deleteProduct(@PathVariable("id") Integer product_id) {
+        repository.deleteById(product_id);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable Integer id) {
-        productsService.deleteProduct(id);
-        return ResponseEntity.noContent().build();
+    @GetMapping("/products/search/{searchstring}")
+    List<Products> searchProduct(@PathVariable("searchstring") String searchString) {
+        return repository.findProductByName(searchString);
     }
 }
-*/

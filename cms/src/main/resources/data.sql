@@ -15,8 +15,15 @@ INSERT INTO products (product_id, supplier_id, name, description, category, pric
 INSERT INTO products (product_id, supplier_id, name, description, category, price, size, color, variant, is_bundle, active) VALUES (666111, 385392, 'Aviator Classic', 'Timeless gold aviators.', 'sunglasses', 85.00, 'medium', 'gold', 'classic', FALSE, TRUE);
 INSERT INTO products (product_id, supplier_id, name, description, category, price, size, color, variant, is_bundle, active) VALUES (666222, 194837, 'Cat Eye Chic', 'Bold black cat eye frames.', 'sunglasses', 65.00, 'small', 'black', 'modern', FALSE, TRUE);
 INSERT INTO products (product_id, supplier_id, name, description, category, price, size, color, variant, is_bundle, active) VALUES (666333, 194837, 'Oversized Glam', 'Large tortoiseshell sunglasses.', 'sunglasses', 75.00, 'large', 'brown', 'bohemian', FALSE, TRUE);
+INSERT INTO products (product_id, supplier_id, name, description, category, price, size, color, variant, is_bundle, active) VALUES (777111, 385392, 'Nude Coffin', 'Neutral beige coffin-shaped press-on nails.', 'nails', 23.99, 'medium', 'beige', 'classic', FALSE, TRUE);
+INSERT INTO products (product_id, supplier_id, name, description, category, price, size, color, variant, is_bundle, active) VALUES (777222, 183894, 'Glitter Galaxy', 'Holographic glitter press-on nails.', 'nails', 26.99, 'large', 'silver', 'contemporary', FALSE, TRUE);
+INSERT INTO products (product_id, supplier_id, name, description, category, price, size, color, variant, is_bundle, active) VALUES (777333, 295610, 'French Tip Kit', 'Classic white French tip nails with application kit.', 'nails', 27.49, 'small', 'white', 'classic', TRUE, TRUE);
+INSERT INTO products (product_id, supplier_id, name, description, category, price, size, color, variant, is_bundle, active) VALUES (888111, 194837, 'Rose Gold Pendant', 'Rose gold heart pendant necklace.', 'necklaces', 48.00, '20in', 'rose gold', 'romantic', FALSE, TRUE);
+INSERT INTO products (product_id, supplier_id, name, description, category, price, size, color, variant, is_bundle, active) VALUES (888222, 183894, 'Layered Chain Set', 'Multi-layer gold chain bundle set.', 'necklaces', 65.00, '16in', 'gold', 'bohemian', TRUE, TRUE);
+INSERT INTO products (product_id, supplier_id, name, description, category, price, size, color, variant, is_bundle, active) VALUES (999111, 295610, 'Round Retro', 'Round tortoiseshell retro frames.', 'sunglasses', 70.00, 'medium', 'brown', 'vintage', FALSE, TRUE);
+INSERT INTO products (product_id, supplier_id, name, description, category, price, size, color, variant, is_bundle, active) VALUES (999222, 385392, 'Shield Sport', 'Mirrored sport shield sunglasses.', 'sunglasses', 90.00, 'large', 'black', 'edgy', FALSE, TRUE);
 
--- INVENTORY (10 rows)
+-- INVENTORY (17 rows)
 INSERT INTO inventory (inventory_id, product_id, stock_quantity, reorder_level, reorderQuantity, warehouseLocation) VALUES (876, 172894, 20, 10, 50, 'Zone-A1');
 INSERT INTO inventory (inventory_id, product_id, stock_quantity, reorder_level, reorderQuantity, warehouseLocation) VALUES (248, 385392, 25, 10, 50, 'Zone-B2');
 INSERT INTO inventory (inventory_id, product_id, stock_quantity, reorder_level, reorderQuantity, warehouseLocation) VALUES (722, 295610, 25, 10, 50, 'Zone-A2');
@@ -27,6 +34,13 @@ INSERT INTO inventory (inventory_id, product_id, stock_quantity, reorder_level, 
 INSERT INTO inventory (inventory_id, product_id, stock_quantity, reorder_level, reorderQuantity, warehouseLocation) VALUES (413, 666111, 12, 5, 15, 'Zone-E1');
 INSERT INTO inventory (inventory_id, product_id, stock_quantity, reorder_level, reorderQuantity, warehouseLocation) VALUES (414, 666222, 8, 10, 15, 'Zone-E2'); -- Low stock!
 INSERT INTO inventory (inventory_id, product_id, stock_quantity, reorder_level, reorderQuantity, warehouseLocation) VALUES (415, 666333, 22, 5, 15, 'Zone-E3');
+INSERT INTO inventory (inventory_id, product_id, stock_quantity, reorder_level, reorderQuantity, warehouseLocation) VALUES (416, 777111, 18, 8, 40, 'Zone-B3');
+INSERT INTO inventory (inventory_id, product_id, stock_quantity, reorder_level, reorderQuantity, warehouseLocation) VALUES (417, 777222, 3, 10, 40, 'Zone-A4'); -- Low stock!
+INSERT INTO inventory (inventory_id, product_id, stock_quantity, reorder_level, reorderQuantity, warehouseLocation) VALUES (418, 777333, 40, 10, 50, 'Zone-B1');
+INSERT INTO inventory (inventory_id, product_id, stock_quantity, reorder_level, reorderQuantity, warehouseLocation) VALUES (419, 888111, 7, 8, 25, 'Zone-D4'); -- Low stock!
+INSERT INTO inventory (inventory_id, product_id, stock_quantity, reorder_level, reorderQuantity, warehouseLocation) VALUES (420, 888222, 20, 5, 25, 'Zone-D5');
+INSERT INTO inventory (inventory_id, product_id, stock_quantity, reorder_level, reorderQuantity, warehouseLocation) VALUES (421, 999111, 6, 8, 20, 'Zone-E4'); -- Low stock!
+INSERT INTO inventory (inventory_id, product_id, stock_quantity, reorder_level, reorderQuantity, warehouseLocation) VALUES (422, 999222, 14, 5, 20, 'Zone-E5');
 
 -- CUSTOMERS (8 rows)
 INSERT INTO customers (id, firstName, lastName, email, phone, city, preferredNailSize, preferredNecklaceLength, preferredSunglassesSize, preferredStyle, active) VALUES (1, 'Sarah', 'Bell', 'sarah.bell@gmail.com', '416-555-0101', 'Toronto', 'large', '18in', 'medium', 'contemporary', TRUE);

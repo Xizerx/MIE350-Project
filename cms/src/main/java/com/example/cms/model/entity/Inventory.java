@@ -3,10 +3,12 @@ package com.example.cms.model.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.math.BigDecimal;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.sql.Timestamp;
 
 @Entity
 @NoArgsConstructor
@@ -22,18 +24,20 @@ public class Inventory {
     @JoinColumn(name = "product_id")
     private Products product;
 
-    @NotEmpty
-    private String shape;
-
-    @NotEmpty
-    private String size;
-
-    private String style;
-
-    private String color;
-
     @NotNull
-    private Integer stock_quantity;
+    private Integer stock_quantity; // Kept your existing name for quantityInStock
 
     private Integer reorder_level;
+
+    private Integer reorderQuantity;
+
+    private String warehouseLocation;
+
+    private Timestamp lastRestocked;
+
+    @CreationTimestamp
+    private Timestamp createdAt;
+
+    @UpdateTimestamp
+    private Timestamp updatedAt;
 }

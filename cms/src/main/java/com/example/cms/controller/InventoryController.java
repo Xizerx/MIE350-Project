@@ -32,6 +32,16 @@ public class InventoryController {
     Inventory retrieveInventory(@PathVariable("id") Integer inventoryId) {
         return repository.findById(inventoryId).orElse(null);
     }
+    // NEW: Low stock endpoint
+    @GetMapping("/inventory/low-stock")
+    List<Inventory> getLowStockInventory() {
+        return repository.findLowStockItems();
+    }
+    // FIXED: Calling the updated repository method
+    @GetMapping("/inventory/product/{productId}")
+    public Inventory getInventoryByProductId(@PathVariable("productId") Integer productId) {
+        return repository.findByProductId(productId).orElse(null);
+    }
 }
 
 /*

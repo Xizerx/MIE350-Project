@@ -1,48 +1,62 @@
 package com.example.cms.controller;
 
+import com.example.cms.model.entity.Customer;
 import com.example.cms.model.entity.Products;
+import com.example.cms.model.repository.CustomerRepository;
 import com.example.cms.model.repository.ProductsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin
 @RestController
 public class ProductsController {
-    @Autowired
+
     private final ProductsRepository repository;
+    private final CustomerRepository customerRepository; // NEW
 
-    public ProductsController(ProductsRepository repository) {
+    @Autowired
+    public ProductsController(ProductsRepository repository, CustomerRepository customerRepository) {
         this.repository = repository;
+        this.customerRepository = customerRepository; // NEW
     }
 
-    @GetMapping("/products")
-    List<Products> retrieveAllProducts() {
-        return repository.findAll();
+    // ... (Keep your existing GET, POST, DELETE methods here) ...
+
+    // NEW: Specialized Feature - Size Profile Matching
+    // NEW: Storefront endpoint for active products only
+    @GetMapping("/products/active")
+    List<Products> retrieveActiveProducts() {
+        return repository.findByActiveTrue();
     }
+    @GetMapping("/products/customer/{customerId}/matched")
+    List<Products> getMatchedProductsForCustomer(@PathVariable("customerId") Long customerId) {
+        // 1. Fetch the customer
+        Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found"));
 
-    @PostMapping("/products")
-    Products createProduct(@RequestBody Products newProduct) {
-        return repository.save(newProduct);
-    }
+        List<Products> matchedProducts = new ArrayList<>();
 
-    @GetMapping("/products/{id}")
-    Optional<Products> retrieveProduct(@PathVariable("id") Integer product_id) {
-        return repository.findById(product_id);
-                //.orElseThrow(() -> new ProductNotFoundException(product_id));
-    }
+        // 2. Match Nails
+        if (customer.getPreferredNailSize() != null) {
+            matchedProducts.addAll(repository.findByCategoryAndSizeAndActiveTrue("nails", customer.getPreferredNailSize()));
+        }
 
-    // create a put
+        // 3. Match Necklaces
+        if (customer.getPreferredNecklaceLength() != null) {
+            matchedProducts.addAll(repository.findByCategoryAndSizeAndActiveTrue("necklaces", customer.getPreferredNecklaceLength()));
+        }
 
-    @DeleteMapping("/products/{id}")
-    void deleteProduct(@PathVariable("id") Integer product_id) {
-        repository.deleteById(product_id);
-    }
+        // 4. Match Sunglasses
+        if (customer.getPreferredSunglassesSize() != null) {
+            matchedProducts.addAll(repository.findByCategoryAndSizeAndActiveTrue("sunglasses", customer.getPreferredSunglassesSize()));
+        }
 
-    @GetMapping("/products/search/{searchstring}")
-    List<Products> searchProduct(@PathVariable("searchstring") String searchString) {
-        return repository.findProductByName(searchString);
+        return matchedProducts;
     }
 }

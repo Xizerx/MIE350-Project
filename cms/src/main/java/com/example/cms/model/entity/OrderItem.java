@@ -1,13 +1,13 @@
 package com.example.cms.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.lang.Nullable;
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 
 @Entity
 @NoArgsConstructor
@@ -17,38 +17,24 @@ import javax.validation.constraints.NotNull;
 public class OrderItem {
 
     @Id
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer order_item_id;
-
-    @NotEmpty
-    private String shape;
-
-    @NotEmpty
-    private String size;
-
-    @NotNull
-    private Integer quantity;
-
-    @NotNull
-    private Double unit_price;
 
     @ManyToOne
     @JoinColumn(name="order_id")
+    @JsonIgnoreProperties("orderItems")
     private Order order;
 
     @ManyToOne
     @JoinColumn(name="product_id")
     private Products product;
 
+    @NotNull
+    private Integer quantity;
 
-    public OrderItem(Integer order_item_id, String shape, String size, Integer quantity, Double unit_price, Order order, Products product){
-        this.order_item_id = order_item_id;
-        this.shape = shape;
-        this.size = size;
-        this.quantity = quantity;
-        this.unit_price = unit_price;
-        this.order = order;
-        this.product = product;
-    }
+    private BigDecimal unit_price;
 
+    private BigDecimal discount = BigDecimal.ZERO;
+
+    private Boolean includesApplicationKit = false;
 }

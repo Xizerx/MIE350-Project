@@ -11,7 +11,7 @@ This document outlines the recent architectural changes to the Spring Boot backe
 * **Inventory (`Inventory.java`):** Streamlined to strictly handle warehouse data (`reorder_level`, `reorderQuantity`, `warehouseLocation`, `lastRestocked`).
 * **Customers (`Customer.java`):** Created a new entity to store contact details and the four specialized size profile fields (`preferredNailSize`, `preferredNecklaceLength`, `preferredSunglassesSize`, `preferredStyle`).
 * **Orders (`Order.java` & `OrderItem.java`):** Converted manual string fields to relational `@ManyToOne` mappings linking to the `Customer` and `Products` tables. Added `@GeneratedValue(strategy = GenerationType.IDENTITY)` for ID auto-incrementing. Added `BigDecimal` fields for strict financial tracking (`subtotal`, `tax`, `totalAmount`) and boolean flags for bundle tracking.
-* **Mock Data (`data.sql`):** Expanded the H2 initialization script to exactly **57 rows** across 6 tables, completely satisfying the MIE350 rubric's minimum tuple requirement.
+* **Mock Data (`data.sql`):** Expanded the H2 initialization script to exactly **57 rows** across 6 tables.
 
 ### Business Logic & Controller Implementations
 * **Specialized Feature 1 (Size Matching):** Created `GET /products/customer/{id}/matched` to dynamically query products matching a specific user's size profile.

@@ -1,8 +1,8 @@
 -- SUPPLIERS (4 rows)
-INSERT INTO suppliers (supplier_id, name, email, phone) VALUES(183894, 'ABX', 'abx@gmail.com', '905-246-7777');
-INSERT INTO suppliers (supplier_id, name, email, phone) VALUES(385392, 'DUW', 'duw@yahoo.com', '416-234-1988');
-INSERT INTO suppliers (supplier_id, name, email, phone) VALUES(295610, 'ABD', 'abd@yahoo.com', '289-407-9011');
-INSERT INTO suppliers (supplier_id, name, email, phone) VALUES(194837, 'LRC', 'lrc@gmail.com', '289-390-0222');
+INSERT INTO suppliers (supplier_id, name, email, phone, number_products_supplied, revenue) VALUES(183894, 'ABX', 'abx@gmail.com', '905-246-7777', 108, 5060.45);
+INSERT INTO suppliers (supplier_id, name, email, phone, number_products_supplied, revenue) VALUES(385392, 'DUW', 'duw@yahoo.com', '416-234-1988', 344, 9632.98);
+INSERT INTO suppliers (supplier_id, name, email, phone, number_products_supplied, revenue) VALUES(295610, 'ABD', 'abd@yahoo.com', '289-407-9011', 652, 26732.00);
+INSERT INTO suppliers (supplier_id, name, email, phone, number_products_supplied, revenue) VALUES(194837, 'LRC', 'lrc@gmail.com', '289-390-0222', 547, 18846.76);
 
 -- PRODUCTS (10 rows)
 INSERT INTO products (product_id, supplier_id, name, description, category, price, size, color, variant, is_bundle, active, imageUrl) VALUES (172894, 183894, 'Midnight Almond', 'Dark purple press-on nails with contemporary design.', 'nails', 24.99, 'large', 'purple', 'contemporary', FALSE, TRUE, 'https://images.pexels.com/photos/7664093/pexels-photo-7664093.jpeg');

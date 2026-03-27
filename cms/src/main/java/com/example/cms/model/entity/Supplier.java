@@ -27,12 +27,18 @@ public class Supplier {
 
     private String phone;
 
+    private Integer number_products_supplied;
 
-    public Supplier(Integer supplier_id, String name, String email, String phone){
+    private Double revenue;
+
+
+    public Supplier(Integer supplier_id, String name, String email, String phone, Integer number_products_supplied, Double revenue){
         this.supplier_id = supplier_id;
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.number_products_supplied = number_products_supplied;
+        this.revenue = revenue;
     }
 
 }

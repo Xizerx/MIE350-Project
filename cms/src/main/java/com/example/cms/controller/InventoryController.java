@@ -32,21 +32,27 @@ public class InventoryController {
     Inventory retrieveInventory(@PathVariable("id") Integer inventoryId) {
         return repository.findById(inventoryId).orElse(null);
     }
-}
-
-/*
+    // NEW: Low stock endpoint
+    @GetMapping("/inventory/low-stock")
+    List<Inventory> getLowStockInventory() {
+        return repository.findLowStockItems();
+    }
+    // FIXED: Calling the updated repository method
+    @GetMapping("/inventory/product/{productId}")
+    public Inventory getInventoryByProductId(@PathVariable("productId") Integer productId) {
+        return repository.findByProductId(productId).orElse(null);
+    }
 
     @PutMapping("/inventory/{id}")
     Inventory updateInventory(@RequestBody Inventory inventory, @PathVariable("id") Integer inventoryId) {
         return repository.findById(inventoryId)
                 .map(existingInventory -> {
                     existingInventory.setProduct(inventory.getProduct());
-                    existingInventory.setShape(inventory.getShape());
-                    existingInventory.setSize(inventory.getSize());
-                    existingInventory.setStyle(inventory.getStyle());
-                    existingInventory.setColor(inventory.getColor());
                     existingInventory.setStock_quantity(inventory.getStock_quantity());
                     existingInventory.setReorder_level(inventory.getReorder_level());
+                    existingInventory.setReorderQuantity(inventory.getReorderQuantity());
+                    existingInventory.setWarehouseLocation(inventory.getWarehouseLocation());
+                    existingInventory.setLastRestocked(inventory.getLastRestocked());
                     return repository.save(existingInventory);
                 })
                 .orElseGet(() -> {
@@ -60,4 +66,3 @@ public class InventoryController {
         repository.deleteById(inventoryId);
     }
 }
-*/

@@ -28,5 +28,9 @@ public class OrderItemController {
         return repository.findById(orderItemId)
                 .orElseThrow(() -> new OrderItemNotFoundException(orderItemId));
     }
+    @GetMapping("/orderItems/by-order/{orderId}")
+    List<OrderItem> retrieveItemsByOrderId(@PathVariable("orderId") Integer orderId) {
+        return repository.findItemsByOrderId(orderId);
+    }
 
 }

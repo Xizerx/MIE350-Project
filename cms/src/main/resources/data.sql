@@ -80,3 +80,44 @@ INSERT INTO order_items (order_item_id, order_id, product_id, quantity, unit_pri
 INSERT INTO order_items (order_item_id, order_id, product_id, quantity, unit_price, includesApplicationKit) VALUES(43, 9012, 295610, 1, 24.99, FALSE);
 INSERT INTO order_items (order_item_id, order_id, product_id, quantity, unit_price, includesApplicationKit) VALUES(44, 7732, 183837, 1, 22.00, FALSE);
 INSERT INTO order_items (order_item_id, order_id, product_id, quantity, unit_price, includesApplicationKit) VALUES(45, 1136, 172894, 1, 24.99, FALSE);
+
+
+-- HISTORICAL ORDERS (Last 6 Months)
+-- October 2025
+INSERT INTO orders (order_id, customer_id, orderNumber, status, subtotal, tax, shippingCost, totalAmount, createdAt) VALUES(2001, 3, 'ORD-2025101501', 'DELIVERED', 45.00, 5.85, 5.00, 55.85, '2025-10-15 10:15:00');
+INSERT INTO orders (order_id, customer_id, orderNumber, status, subtotal, tax, shippingCost, totalAmount, createdAt) VALUES(2002, 5, 'ORD-2025102202', 'DELIVERED', 85.00, 11.05, 0.00, 96.05, '2025-10-22 14:30:00');
+
+-- November 2025 (Black Friday Spike)
+INSERT INTO orders (order_id, customer_id, orderNumber, status, subtotal, tax, shippingCost, totalAmount, createdAt) VALUES(2003, 1, 'ORD-2025112501', 'DELIVERED', 120.00, 15.60, 0.00, 135.60, '2025-11-25 09:00:00');
+INSERT INTO orders (order_id, customer_id, orderNumber, status, subtotal, tax, shippingCost, totalAmount, createdAt) VALUES(2004, 2, 'ORD-2025112802', 'DELIVERED', 70.00, 9.10, 0.00, 79.10, '2025-11-28 11:20:00');
+INSERT INTO orders (order_id, customer_id, orderNumber, status, subtotal, tax, shippingCost, totalAmount, createdAt) VALUES(2005, 8, 'ORD-2025112903', 'DELIVERED', 48.00, 6.24, 5.00, 59.24, '2025-11-29 16:45:00');
+
+-- December 2025
+INSERT INTO orders (order_id, customer_id, orderNumber, status, subtotal, tax, shippingCost, totalAmount, createdAt) VALUES(2006, 4, 'ORD-2025121001', 'DELIVERED', 65.00, 8.45, 0.00, 73.45, '2025-12-10 13:10:00');
+INSERT INTO orders (order_id, customer_id, orderNumber, status, subtotal, tax, shippingCost, totalAmount, createdAt) VALUES(2007, 7, 'ORD-2025121802', 'DELIVERED', 90.00, 11.70, 0.00, 101.70, '2025-12-18 10:05:00');
+
+-- January 2026
+INSERT INTO orders (order_id, customer_id, orderNumber, status, subtotal, tax, shippingCost, totalAmount, createdAt) VALUES(2008, 6, 'ORD-2026010501', 'DELIVERED', 35.00, 4.55, 5.00, 44.55, '2026-01-05 08:30:00');
+INSERT INTO orders (order_id, customer_id, orderNumber, status, subtotal, tax, shippingCost, totalAmount, createdAt) VALUES(2009, 2, 'ORD-2026012002', 'DELIVERED', 55.00, 7.15, 0.00, 62.15, '2026-01-20 15:50:00');
+
+-- February 2026
+INSERT INTO orders (order_id, customer_id, orderNumber, status, subtotal, tax, shippingCost, totalAmount, createdAt) VALUES(2010, 1, 'ORD-2026021201', 'DELIVERED', 75.00, 9.75, 5.00, 89.75, '2026-02-12 12:00:00');
+INSERT INTO orders (order_id, customer_id, orderNumber, status, subtotal, tax, shippingCost, totalAmount, createdAt) VALUES(2011, 3, 'ORD-2026022502', 'DELIVERED', 24.99, 3.25, 5.00, 33.24, '2026-02-25 09:40:00');
+
+-- HISTORICAL ORDER ITEMS
+-- Oct
+INSERT INTO order_items (order_item_id, order_id, product_id, quantity, unit_price, includesApplicationKit) VALUES(101, 2001, 555111, 1, 45.00, FALSE);
+INSERT INTO order_items (order_item_id, order_id, product_id, quantity, unit_price, includesApplicationKit) VALUES(102, 2002, 666111, 1, 85.00, FALSE);
+-- Nov
+INSERT INTO order_items (order_item_id, order_id, product_id, quantity, unit_price, includesApplicationKit) VALUES(103, 2003, 555333, 2, 55.00, FALSE);
+INSERT INTO order_items (order_item_id, order_id, product_id, quantity, unit_price, includesApplicationKit) VALUES(104, 2004, 999111, 1, 70.00, FALSE);
+INSERT INTO order_items (order_item_id, order_id, product_id, quantity, unit_price, includesApplicationKit) VALUES(105, 2005, 888111, 1, 48.00, FALSE);
+-- Dec
+INSERT INTO order_items (order_item_id, order_id, product_id, quantity, unit_price, includesApplicationKit) VALUES(106, 2006, 888222, 1, 65.00, TRUE);
+INSERT INTO order_items (order_item_id, order_id, product_id, quantity, unit_price, includesApplicationKit) VALUES(107, 2007, 999222, 1, 90.00, FALSE);
+-- Jan
+INSERT INTO order_items (order_item_id, order_id, product_id, quantity, unit_price, includesApplicationKit) VALUES(108, 2008, 555222, 1, 35.00, FALSE);
+INSERT INTO order_items (order_item_id, order_id, product_id, quantity, unit_price, includesApplicationKit) VALUES(109, 2009, 555333, 1, 55.00, FALSE);
+-- Feb
+INSERT INTO order_items (order_item_id, order_id, product_id, quantity, unit_price, includesApplicationKit) VALUES(110, 2010, 666333, 1, 75.00, FALSE);
+INSERT INTO order_items (order_item_id, order_id, product_id, quantity, unit_price, includesApplicationKit) VALUES(111, 2011, 172894, 1, 24.99, FALSE);

@@ -3,8 +3,12 @@ package com.example.cms.controller;
 import com.example.cms.model.entity.Inventory;
 import com.example.cms.model.entity.Order;
 import com.example.cms.model.entity.OrderItem;
+import com.example.cms.model.entity.Customer;
+import com.example.cms.model.entity.Products;
+import com.example.cms.model.repository.CustomerRepository;
 import com.example.cms.model.repository.InventoryRepository;
 import com.example.cms.model.repository.OrderRepository;
+import com.example.cms.model.repository.ProductsRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -20,11 +24,17 @@ public class OrderController {
 
     private final OrderRepository repository;
     private final InventoryRepository inventoryRepository; // NEW
+    private final CustomerRepository customerRepository;
+    private final ProductsRepository productsRepository;
+
 
     // NEW: Inject InventoryRepository
-    public OrderController(OrderRepository repository, InventoryRepository inventoryRepository) {
+    public OrderController(OrderRepository repository, InventoryRepository inventoryRepository,
+                           CustomerRepository customerRepository, ProductsRepository productsRepository) {
         this.repository = repository;
         this.inventoryRepository = inventoryRepository;
+        this.customerRepository = customerRepository;
+        this.productsRepository = productsRepository;
     }
 
     @GetMapping("/orders")
@@ -44,6 +54,11 @@ public class OrderController {
 
     @PostMapping("/orders")
     Order createOrder(@RequestBody Order order) {
+        Customer existingCustomer = customerRepository.findById(order.getCustomer().getId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Customer not found"));
+
+        order.setCustomer(existingCustomer);
+
         order.setOrderNumber("ORD-" + System.currentTimeMillis());
         order.setStatus("PENDING");
 
@@ -52,6 +67,11 @@ public class OrderController {
         if (order.getOrderItems() != null) {
             for (OrderItem item : order.getOrderItems()) {
                 item.setOrder(order);
+
+                Products existingProduct = productsRepository.findById(item.getProduct().getProduct_id())
+                        .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Product not found"));
+
+                item.setProduct(existingProduct);
 
                 // --- NEW: INVENTORY CHECK & DECREMENT ---
                 if (item.getProduct() != null) {

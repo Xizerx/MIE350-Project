@@ -10,8 +10,9 @@ import java.util.List;
 public interface ProductsRepository extends JpaRepository<Products, Integer> {
     List<Products> findProductByName(String name);
 
-    // NEW: Find active products by category and size
-    List<Products> findByCategoryAndSizeAndActiveTrue(String category, String size);
+    //NEW: Find active products by category, size, and style
+    List<Products> findByCategoryAndSizeAndVariantAndActiveTrue(String category, String size, String variant);
+
     // NEW: Find all active products
     List<Products> findByActiveTrue();
 

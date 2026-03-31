@@ -141,18 +141,18 @@ public class ProductsController {
         List<Products> matchedProducts = new ArrayList<>();
 
         // 2. Match Nails
-        if (customer.getPreferredNailSize() != null) {
-            matchedProducts.addAll(repository.findByCategoryAndSizeAndActiveTrue("nails", customer.getPreferredNailSize()));
+        if (customer.getPreferredNailSize() != null && customer.getPreferredStyle() != null) {
+            matchedProducts.addAll(repository.findByCategoryAndSizeAndVariantAndActiveTrue("nails", customer.getPreferredNailSize(), customer.getPreferredStyle()));
         }
 
         // 3. Match Necklaces
-        if (customer.getPreferredNecklaceLength() != null) {
-            matchedProducts.addAll(repository.findByCategoryAndSizeAndActiveTrue("necklaces", customer.getPreferredNecklaceLength()));
+        if (customer.getPreferredNecklaceLength() != null && customer.getPreferredStyle() != null) {
+            matchedProducts.addAll(repository.findByCategoryAndSizeAndVariantAndActiveTrue("necklaces", customer.getPreferredNecklaceLength(), customer.getPreferredStyle()));
         }
 
         // 4. Match Sunglasses
-        if (customer.getPreferredSunglassesSize() != null) {
-            matchedProducts.addAll(repository.findByCategoryAndSizeAndActiveTrue("sunglasses", customer.getPreferredSunglassesSize()));
+        if (customer.getPreferredSunglassesSize() != null && customer.getPreferredStyle() != null) {
+            matchedProducts.addAll(repository.findByCategoryAndSizeAndVariantAndActiveTrue("sunglasses", customer.getPreferredSunglassesSize(), customer.getPreferredStyle()));
         }
 
         return matchedProducts;

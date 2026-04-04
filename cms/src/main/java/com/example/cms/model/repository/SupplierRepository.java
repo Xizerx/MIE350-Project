@@ -3,8 +3,11 @@ package com.example.cms.model.repository;
 import com.example.cms.controller.dto.SupplierSummaryDto;
 import com.example.cms.model.entity.Supplier;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public interface SupplierRepository extends JpaRepository<Supplier, Integer> {
@@ -23,4 +26,9 @@ public interface SupplierRepository extends JpaRepository<Supplier, Integer> {
             "ORDER BY s.supplier_id",
             nativeQuery = true)
     List<Object[]> findSupplierSummariesRaw();
+
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM suppliers WHERE supplier_id = :supplierId", nativeQuery = true)
+    void deleteSupplierAfterProducts (@Param("supplierId") Integer supplierId);
 }

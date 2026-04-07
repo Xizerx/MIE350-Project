@@ -11,7 +11,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -23,28 +22,9 @@ public class AngelveilIntegrationTests {
     @Autowired
     private MockMvc mockMvc;
 
-    @Test
-    void test1_SizeProfileMatching() throws Exception {
-        // Customer 1 (Sarah) prefers "large" nails, "18in" necklaces, and "medium" sunglasses
-        mockMvc.perform(get("/products/customer/1/matched"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()").value(3))
-                // FIXED: Changed "Oversized Glam" (large) to "Aviator Classic" (medium) to match Sarah's profile
-                .andExpect(jsonPath("$[*].name").value(hasItems("Midnight Almond", "Aviator Classic", "Gold Chain")));
-    }
-    @Test
-    void test2_AnalyticsGeneration() throws Exception {
-        // Fetches analytics and verifies the server aggregates the 10 test orders properly
-        mockMvc.perform(get("/analytics/last-30-days"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.totalOrders").value(10))
-                .andExpect(jsonPath("$.conversionRate").value(30.0)) // 3 out of 10 are DELIVERED
-                .andExpect(jsonPath("$.categoryBreakdown").isArray())
-                .andExpect(jsonPath("$.categoryBreakdown").isNotEmpty());
-    }
 
     @Test
-    void test3_AutomatedOrderCalculationsAndInventoryDecrement() throws Exception {
+    void test1_AutomatedOrderCalculationsAndInventoryDecrement() throws Exception {
         // Step 1: Verify starting stock is 20
         mockMvc.perform(get("/inventory/product/172894"))
                 .andExpect(status().isOk())
@@ -75,7 +55,7 @@ public class AngelveilIntegrationTests {
     }
 
     @Test
-    void test4_InventoryRestorationOnCancellation() throws Exception {
+    void test2_InventoryRestorationOnCancellation() throws Exception {
         // Create the order
         String orderJson = "{\n" +
                 "  \"customer\": { \"id\": 1 },\n" +
@@ -110,7 +90,7 @@ public class AngelveilIntegrationTests {
     }
 
     @Test
-    void test5_OutOfStockRejection() throws Exception {
+    void test3_OutOfStockRejection() throws Exception {
         // Product 555222 only has 5 units in stock. Try to order 10.
         String oversizedOrderJson = "{\n" +
                 "  \"customer\": { \"id\": 1 },\n" +

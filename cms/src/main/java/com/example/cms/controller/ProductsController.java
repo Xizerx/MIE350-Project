@@ -6,13 +6,12 @@ import com.example.cms.controller.exceptions.SupplierNotFoundException;
 import com.example.cms.model.entity.Customer;
 import com.example.cms.model.entity.Products;
 import com.example.cms.model.entity.Supplier;
-import com.example.cms.model.repository.CustomerRepository;
-import com.example.cms.model.repository.ProductsRepository;
-import com.example.cms.model.repository.SupplierRepository;
+import com.example.cms.model.repository.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -33,12 +32,17 @@ import java.util.Optional;
 public class ProductsController {
 
     private final ProductsRepository repository;
-    private final CustomerRepository customerRepository; // NEW
+    private final CustomerRepository customerRepository;
+    private final InventoryRepository inventoryRepository;
+    private final OrderItemRepository orderItemRepository;
+
 
     @Autowired
-    public ProductsController(ProductsRepository repository, CustomerRepository customerRepository) {
+    public ProductsController(ProductsRepository repository, CustomerRepository customerRepository, InventoryRepository inventoryRepository, OrderItemRepository orderItemRepository) {
         this.repository = repository;
         this.customerRepository = customerRepository; // NEW
+        this.inventoryRepository = inventoryRepository;
+        this.orderItemRepository = orderItemRepository;
     }
 
     @Autowired
@@ -120,9 +124,14 @@ public class ProductsController {
                 });
     }
 
+    @Transactional
     @DeleteMapping("/products/{id}")
-    void deleteProduct(@PathVariable("id") Integer productCode) {
-        repository.deleteById(productCode);
+    public void deleteProductAndInventory(@PathVariable("id") Integer productCode) {
+
+        inventoryRepository.deleteInventoryBeforeProduct(productCode);
+        orderItemRepository.deleteOrderItemBeforeProduct(productCode);
+        repository.deleteProductAfterInventory(productCode);
+
     }
 
 
